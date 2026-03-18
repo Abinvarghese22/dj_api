@@ -1,0 +1,93 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student List</h1>
+
+    <table border="2">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+
+        {% for st in stud %}
+        <tr>
+            <td>{{ st.name }}</td>
+            <td>{{ st.email }}</td>
+            <td>{{ st.age }}</td>
+            <td>
+                <button style="background-color: red; color: white;"><a href="{% url 'student-delete' st.pk %}">Delete</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Student List</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover text-center align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for st in stud %}
+                <tr>
+                    <td>{{ st.name }}</td>
+                    <td>{{ st.email }}</td>
+                    <td>{{ st.age }}</td>
+                    <td>
+                        <a href="{% url 'student-delete' st.pk %}"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Are you sure you want to delete this student?');">
+                            Delete
+                        </a>
+                    </td>
+                    <td>
+                        
+                        <a  class="btn btn-primary btn-sm" href="{% url 'student-update' st.pk %}">Update</a>
+                    </td>
+
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
